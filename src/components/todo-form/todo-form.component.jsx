@@ -1,15 +1,15 @@
 import { useState } from "react";
 
-const TodoForm = ({setTodoNumber, todoNumber, setTodoArr}) => {
+const TodoForm = ({todoNumber, setTodoArr}) => {
     const [todoInput, setTodoInput] = useState("");
     return (
         <form 
         className="todo-form" 
         onSubmit={e => {
             e.preventDefault();
-            setTodoNumber(todoNumber + 1);
+            todoNumber.current++;
             setTodoArr(prevTodoArr => {
-                const newTodoArr = [...prevTodoArr, {id: todoNumber,todo: todoInput}];
+                const newTodoArr = [...prevTodoArr, {id: todoNumber.current,todo: todoInput}];
                     localStorage.setItem('todos', JSON.stringify(newTodoArr));
                     return newTodoArr;
                 });
