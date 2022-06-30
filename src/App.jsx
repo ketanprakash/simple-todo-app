@@ -6,13 +6,17 @@ import TodoContainer from "./components/todo-container/todo-container.component"
 const App = () => {
   const [todoArr, setTodoArr] = useState([]);
   const todoNumber = useRef(0);
+  const alreadyCalled = useRef(false);
 
   useEffect(() => {
-    const todosJson = localStorage.getItem("todos");
-    if (todosJson) {
-      const todos = JSON.parse(todosJson);
-      setTodoArr([...todos]);
-      todoNumber.current = todos.length > 0 ? todos[todos.length - 1].id : 0;
+    if (!alreadyCalled.current){
+      alreadyCalled.current = true;
+      const todosJson = localStorage.getItem("todos");
+      if (todosJson) {
+        const todos = JSON.parse(todosJson);
+        setTodoArr([...todos]);
+        todoNumber.current = todos.length > 0 ? todos[todos.length - 1].id : 0;
+      }
     }
   }, []);
 
