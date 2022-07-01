@@ -13,7 +13,6 @@ const TodoForm = ({ todoNumber, setTodoArr }) => {
             ...prevTodoArr,
             { id: todoNumber.current, todo: todoInput },
           ];
-          localStorage.setItem("todos", JSON.stringify(newTodoArr));
           return newTodoArr;
         });
         setTodoInput("");

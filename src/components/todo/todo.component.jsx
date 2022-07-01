@@ -9,7 +9,6 @@ const Todo = ({ todo, setTodoArr, id }) => {
             const newTodoArr = prevTodoArr.filter(
               (todoObj) => id !== todoObj.id
             );
-            localStorage.setItem("todos", JSON.stringify(newTodoArr));
             return newTodoArr;
           });
         }}
